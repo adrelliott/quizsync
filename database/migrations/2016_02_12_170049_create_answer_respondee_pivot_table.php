@@ -13,8 +13,10 @@ class CreateAnswerRespondeePivotTable extends Migration
     public function up()
     {
         Schema::create('answer_respondee', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('answer_id')->unsigned();
+            $table->integer('respondee_id')->unsigned();
             $table->timestamps();
+            // @todo: Add foreign keys answer_id & respondee_id
         });
     }
 

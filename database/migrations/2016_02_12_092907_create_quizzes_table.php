@@ -22,7 +22,7 @@ class CreateQuizzesTable extends Migration
             $table->integer('tenant_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();
-            // @todo Add Foriegn keys to user_id and tenant_id
+            // @todo Add Foreign keys to user_id and tenant_id
         });
     }
 

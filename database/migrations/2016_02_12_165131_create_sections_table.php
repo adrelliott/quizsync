@@ -14,7 +14,13 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('section_title');
+            $table->string('section_description')->nullable();
+            $table->smallInteger('order_by')->unsigned();
+            $table->integer('quiz_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
+            // @todo Add Foreign key to Quiz
         });
     }
 

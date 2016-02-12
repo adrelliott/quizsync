@@ -14,7 +14,13 @@ class CreateRespondeesTable extends Migration
     {
         Schema::create('respondees', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email');
+            $table->integer('tenant_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
+            // @todo Add Foreign keys to user_id and tenant_id
         });
     }
 

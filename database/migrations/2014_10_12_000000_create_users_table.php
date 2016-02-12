@@ -18,7 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
+            $table->integer('tenant_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
+            // @todo Add Foreign key to tenant_id
         });
     }
 
