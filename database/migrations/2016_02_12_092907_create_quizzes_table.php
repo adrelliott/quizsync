@@ -14,7 +14,15 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('quiz_title');
+            $table->string('quiz_description')->nullable();
+            $table->string('quiz_url',64)->nullable();
+            $table->boolean('is_public')->default('false');
+            $table->integer('user_id')->unsigned();
+            $table->integer('tenant_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
+            // @todo Add Foriegn keys to user_id and tenant_id
         });
     }
 

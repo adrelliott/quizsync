@@ -15,10 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+## Site Routes (public facing)
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 // Route::get('about', 'PagesController@about');
 // Route::get('contact', 'PagesController@contact');
+
+## App Routes (logged in users only)
+Route::get('app/quizzes', 'QuizController@index');
+Route::get('app/quizzes/create', 'QuizzesController@create'); //shows create form
+Route::get('app/quizzes/{quizzes}', 'QuizzesController@show'); //shows a quizzes
+Route::get('app/quizzes/{quizzes}/edit', 'QuizzesController@edit'); //shows edit form
+Route::post('app/quizzes/{quizzes}', 'QuizzesController@store');
+Route::put('app/quizzes/{quizzes}', 'QuizzesController@update');
+Route::delete('app/quizzes/{quizzes}', 'QuizController@destroy');
+
+
+
 
 /*
 |--------------------------------------------------------------------------
