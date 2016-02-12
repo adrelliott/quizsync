@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Quiz;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class QuizController extends Controller
+class QuizzesController extends Controller
 {
+    protected $quiz;
+
+    public function __construct(Quiz $quiz)
+    {
+        $this->quiz = $quiz;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +24,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-        // @todo get all quizzes
-        return view('quizzes.index');
+        $quiz = $this->quiz->all();
+        return view('quizzes.index', compact('quiz'));
     }
 
     /**
@@ -27,7 +35,6 @@ class QuizController extends Controller
      */
     public function create()
     {
-        // @todo get all quizzes
         return view('quizzes.create');
     }
 
@@ -39,7 +46,8 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->quiz->createQuiz($request);
+        return redirect('/app/quizzes');
     }
 
     /**
@@ -50,7 +58,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        // @todo get all quizzes
+        // @todo get all quiz
         return view('quizzes.show');
     }
 
@@ -62,7 +70,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        // @todo get all quizzes
+        // @todo get all quiz
         return view('quizzes.edit');
     }
 
@@ -87,5 +95,15 @@ class QuizController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Gets the value of quiz.
+     *
+     * @return mixed
+     */
+    protected function getQuizzes()
+    {
+        return $this->quiz;
     }
 }
