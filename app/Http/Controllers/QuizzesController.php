@@ -24,8 +24,8 @@ class QuizzesController extends Controller
      */
     public function index()
     {
-        $quiz = $this->quiz->all();
-        return view('quizzes.index', compact('quiz'));
+        $quizzes = $this->quiz->getQuizzes();
+        return view('quizzes.index', compact('quizzes'));
     }
 
     /**

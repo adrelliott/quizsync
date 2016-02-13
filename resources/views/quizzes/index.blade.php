@@ -17,5 +17,6 @@
 			</tr>
 		@endforeach
 		</table>
+		{!! $quizzes->render() !!}
 	</div>
 @endsection
