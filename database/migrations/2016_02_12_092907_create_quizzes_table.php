@@ -17,6 +17,9 @@ class CreateQuizzesTable extends Migration
             $table->string('quiz_title');
             $table->string('quiz_description')->nullable();
             $table->string('quiz_url',64)->nullable();
+            $table->string('welcome_title')->nullable();
+            $table->string('welcome_description')->nullable();
+            $table->string('button_text',24)->nullable();
             $table->boolean('is_public')->default('false');
             $table->integer('user_id')->unsigned();
             $table->integer('tenant_id')->unsigned();

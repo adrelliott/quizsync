@@ -3,27 +3,41 @@
 namespace App;
 
 use App\Section;
+use App\Traits\UserTrait;
 use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-	// use Traits\UserTrait;
-	
-	protected $fillable = ['quiz_title', 'quiz_description', 'quiz_url', 'is_public'];
+	/**
+	 * Adds a method to append the user_id and tenant_id onto a record
+	 */
+	use UserTrait;
 
+	protected $fillable = ['quiz_title', 'quiz_description', 'is_public'];
 
+    /*
+    * Realtionship: one quiz can have many sections
+     */
     public function sections()
     {
     	return hasMany(Section::class);
     }
 
+    /*
+    Get a paginated list of quizzes
+     */
     public function getQuizzes()
     {
     	return $this->paginate(5);
     }
 
+    /**
+     * Stores a new quiz
+     * @param  Request $request The request object
+
+     */
     public function createQuiz(Request $request)
     {
  		// Set the basic properties
@@ -39,12 +53,5 @@ class Quiz extends Model
 		$this->quiz_url = Hashids::encode($this->id);
  		$this->save();
     }
-
-    protected function addUserAttributes()
-    {
-    	$this->user_id = 2;
-    	$this->tenant_id = 33;
-    }
-
 
 }

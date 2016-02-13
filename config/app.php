@@ -155,6 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
         * 3rd Party Service Providers
@@ -212,6 +213,8 @@ return [
         * 3rd Party Aliases
         */
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
 
     ],

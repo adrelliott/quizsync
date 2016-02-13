@@ -22,13 +22,13 @@ Route::get('home', 'HomeController@index');
 // Route::get('contact', 'PagesController@contact');
 
 ## App Routes (logged in users only)
-Route::get('app/quizzes', 'QuizzesController@index');
-Route::get('app/quizzes/create', 'QuizzesController@create'); //shows create form
-Route::get('app/quizzes/{quizzes}', 'QuizzesController@show'); //shows a quizzes
-Route::get('app/quizzes/{quizzes}/edit', 'QuizzesController@edit'); //shows edit form
-Route::post('app/quizzes', 'QuizzesController@store');
-Route::put('app/quizzes/{quizzes}', 'QuizzesController@update');
-Route::delete('app/quizzes/{quizzes}', 'QuizzesController@destroy');
+Route::get('app/quizzes', ['as' => 'quizzes.index', 'uses' => 'QuizzesController@index']);
+Route::get('app/quizzes/create', ['as' => 'quizzes.create', 'uses' => 'QuizzesController@create']); 
+Route::get('app/quizzes/{quiz}', ['as' => 'quizzes.show', 'uses' => 'QuizzesController@show']); 
+Route::get('app/quizzes/{quiz}/edit', ['as' => 'quizzes.edit', 'uses' => 'QuizzesController@edit']); 
+Route::post('app/quizzes', ['as' => 'quizzes.store', 'uses' => 'QuizzesController@store']);
+Route::put('app/quizzes/{quizzes}', ['as' => 'quizzes.update', 'uses' => 'QuizzesController@update']);
+Route::delete('app/quizzes/{quizzes}', ['as' => 'quizzes.destroy', 'uses' => 'QuizzesController@destroy']);
 
 
 

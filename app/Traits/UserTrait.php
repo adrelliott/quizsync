@@ -4,9 +4,9 @@ namespace App\Traits;
 
 trait UserTrait {
 
-	protected function addUserAttributes()
+	public function addUserAttributes()
     {
-    	$this->user_id = 2;
+    	$this->user_id = 2333;
     	$this->tenant_id = 33;
     }
 }
