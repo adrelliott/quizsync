@@ -2,13 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Quiz;
 use App\Section;
+use App\Question;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class QuestionsController extends Controller
 {
+    protected $question;
+    protected $quiz;
+
+    public function __construct(Question $question, Quiz $quiz)
+    {
+        $this->question = $question;
+        $this->quiz = $quiz;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +38,9 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Section $section)
+    public function create(Quiz $quiz)
     {
-        return view('questions.create', compact('section'));
+        return view('questions.create', compact('quiz'));
     }
 
     /**
@@ -37,9 +49,10 @@ class QuestionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Section $section)
     {
-        //
+        $this->question->createQuestion($request, $section);
+        return redirect('/app/quizzes/' . $section->quiz_id);
     }
 
     /**

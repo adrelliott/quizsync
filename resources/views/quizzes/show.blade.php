@@ -27,9 +27,11 @@
 				</a>
 			</div>
 			<ul class="list-group">
-				<li class="list-group-item">Item 1</li>
-				<li class="list-group-item">Item 2</li>
-				<li class="list-group-item">Item 3</li>
+				@forelse($section->questions as $question)
+					<li class="list-group-item">{{ $question->title }}</li>
+				@empty
+					<li class="list-group-item">No questions defined</li>
+				@endforelse
 			</ul>
 		</div>
 	@empty

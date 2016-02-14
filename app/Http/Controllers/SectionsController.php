@@ -18,8 +18,6 @@ class SectionsController extends Controller
     }
 
 
-    
-
     /**
      * Show the form for creating a new resource.
      *
@@ -58,6 +56,7 @@ class SectionsController extends Controller
         return view('sections.edit', compact('quiz', 'section'));
     }
 
+
     /**
      * route: sections.update
      * url: PUT app/quizzes/{quiz}/sections/{section}
@@ -70,8 +69,9 @@ class SectionsController extends Controller
     public function update(Request $request, Section $section)
     {
         $this->section->updateSection($request, $section);
-        return redirect('/app/quizzes/' . $_GET['quiz_id']);
+        return redirect('/app/quizzes/' . $section->quiz_id);
     }
+
 
     /**
      * Remove the specified resource from storage.
