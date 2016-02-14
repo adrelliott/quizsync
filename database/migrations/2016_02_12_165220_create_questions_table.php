@@ -14,16 +14,16 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('question_title');
-            $table->string('question_description')->nullable();
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->string('button_text',24);
-            $table->string('question_type',64);
+            $table->string('type',64);
             $table->smallInteger('order_by')->unsigned();
             $table->integer('quiz_id')->unsigned();
             $table->integer('section_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();
-            // @todo Add Foreign keys to question_id and section_id
+            // @todo Add Foreign keys to id and section_id
         });
     }
 

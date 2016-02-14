@@ -14,9 +14,9 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('quiz_title');
-            $table->string('quiz_description')->nullable();
-            $table->string('quiz_url',64)->nullable();
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->string('url',64)->nullable();
             $table->string('welcome_title')->nullable();
             $table->string('welcome_description')->nullable();
             $table->string('button_text',24)->nullable();

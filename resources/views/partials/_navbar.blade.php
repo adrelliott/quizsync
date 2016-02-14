@@ -15,8 +15,9 @@
 <?php $active = false ?>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="{ { $active == 'home' ? 'active' : '' } }"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-          <li class="{ { $active == 'about' ? 'active' : '' } }"><a href="#">About</a></li>
+          <li class="{ { $active == 'quizzes' ? 'active' : '' } }">
+            <a href="{{ route('quizzes.index') }}">Quizzes <span class="sr-only">(current)</span></a>
+          </li>
         </ul>
         
         <ul class="nav navbar-nav navbar-right">

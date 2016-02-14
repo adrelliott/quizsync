@@ -15,14 +15,14 @@ class Quiz extends Model
 	 */
 	use UserTrait;
 
-	protected $fillable = ['quiz_title', 'quiz_description', 'is_public'];
+	protected $fillable = ['title', 'description', 'is_public'];
 
     /*
     * Realtionship: one quiz can have many sections
      */
     public function sections()
     {
-    	return hasMany(Section::class);
+    	return $this->hasMany(Section::class);
     }
 
     /*
@@ -41,8 +41,8 @@ class Quiz extends Model
     public function createQuiz(Request $request)
     {
  		// Set the basic properties
-		$this->quiz_title = $request->quiz_title;
-		$this->quiz_description = $request->quiz_description;
+		$this->title = $request->title;
+		$this->description = $request->description;
 		$this->is_public = $request->is_public;
 
 		// Set the user_id & tenant_id (from the Auth::user()) & persist
@@ -50,8 +50,9 @@ class Quiz extends Model
 		$this->save(); //sets the row id - rqd for the hash below
 
 		// Set the quiz url & update the record
-		$this->quiz_url = Hashids::encode($this->id);
+		$this->url = Hashids::encode($this->id);
  		$this->save();
     }
+
 
 }

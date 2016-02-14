@@ -17,9 +17,9 @@
 					<tbody data-link="row" class="rowlink">
 						@foreach($quizzes as $quiz)
 							<tr>
-								<td><a href="{{ route('quizzes.show', $quiz->id) }}">{{ $quiz->quiz_title }}</a></td>
-								<td>{{ $quiz->quiz_description }}</td>
-								<td>QuizSync.com/to/{{ $quiz->quiz_url }}</td>
+								<td><a href="{{ route('quizzes.show', $quiz->id) }}">{{ $quiz->title }}</a></td>
+								<td>{{ $quiz->description }}</td>
+								<td>QuizSync.com/to/{{ $quiz->url }}</td>
 							</tr>
 						@endforeach
 					</tbody>

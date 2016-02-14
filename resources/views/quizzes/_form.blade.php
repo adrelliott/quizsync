@@ -4,12 +4,12 @@
 	{!! Form::model($quiz, ['route' => ['quizzes.update', $quiz->id], 'method' => 'put']) !!}
 @endif				
 	<div class="form-group">
-		{{ Form::label('quiz_title', 'Quiz Title') }}
-		{{ Form::text('quiz_title', null, ['class' => 'form-control input-sm']) }}
+		{{ Form::label('title', 'Quiz Title') }}
+		{{ Form::text('title', null, ['class' => 'form-control input-sm']) }}
 	</div>
 	<div class="form-group">
-		{{ Form::label('quiz_description', 'Quiz Description') }}
-		{{ Form::textarea('quiz_description', null, ['class' => 'form-control  input-sm', 'rows' => 3]) }}
+		{{ Form::label('description', 'Quiz Description') }}
+		{{ Form::textarea('description', null, ['class' => 'form-control  input-sm', 'rows' => 3]) }}
 	</div>
 	<div class="form-group">
 		<p><b>Quiz status:</b></p>

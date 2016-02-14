@@ -2,75 +2,78 @@
 
 namespace App\Http\Controllers;
 
-use App\Quiz;
 use App\Section;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SectionsController extends Controller
+class QuestionsController extends Controller
 {
-    protected $section;
-
-    public function __construct(Section $section)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $this->section = $section;
+        //
     }
 
-
-    
-
     /**
+     * route: questions.create
+     * URL: app/sections/{section}/questions/create
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Quiz $quiz)
+    public function create(Section $section)
     {
-        return view('sections.create', compact('quiz'));
+        return view('questions.create', compact('section'));
     }
 
     /**
-     * POST to app/quizzes/{quiz}/sections
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Quiz $quiz)
+    public function store(Request $request)
     {
-        $this->section->createSection($request, $quiz);
-        return redirect('/app/quizzes/' . $quiz->id);
+        //
     }
 
-    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
     /**
-     * route: sections.edit
-     * url: GET app/quizzes/{quiz}/sections/{section}/edit
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz, Section $section)
+    public function edit($id)
     {
-        return view('sections.edit', compact('quiz', 'section'));
+        //
     }
 
     /**
-     * route: sections.update
-     * url: PUT app/quizzes/{quiz}/sections/{section}
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Section $section)
+    public function update(Request $request, $id)
     {
-        $this->section->updateSection($request, $section);
-        return redirect('/app/quizzes/' . $_GET['quiz_id']);
+        //
     }
 
     /**

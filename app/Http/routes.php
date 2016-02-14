@@ -31,11 +31,23 @@ Route::get('app/quizzes/create', ['as' => 'quizzes.create', 'uses' => 'QuizzesCo
 Route::get('app/quizzes/{quiz}', ['as' => 'quizzes.show', 'uses' => 'QuizzesController@show']); 
 Route::get('app/quizzes/{quiz}/edit', ['as' => 'quizzes.edit', 'uses' => 'QuizzesController@edit']); 
 Route::post('app/quizzes', ['as' => 'quizzes.store', 'uses' => 'QuizzesController@store']);
-Route::put('app/quizzes/{quizzes}', ['as' => 'quizzes.update', 'uses' => 'QuizzesController@update']);
-Route::delete('app/quizzes/{quizzes}', ['as' => 'quizzes.destroy', 'uses' => 'QuizzesController@destroy']);
+Route::put('app/quizzes/{quiz}', ['as' => 'quizzes.update', 'uses' => 'QuizzesController@update']);
+Route::delete('app/quizzes/{quiz}', ['as' => 'quizzes.destroy', 'uses' => 'QuizzesController@destroy']);
 
 ## Sections
-Route::get('app/quizzes/{quiz}/sections/create', ['as' => 'sections.create', 'uses' => 'SectionsController@create']); 
+Route::get('app/quizzes/{quiz}/sections/create', ['as' => 'sections.create', 'uses' => 'SectionsController@create']);
+Route::get('app/quizzes/{quiz}/sections/{section}/edit', ['as' => 'sections.edit', 'uses' => 'SectionsController@edit']);
+Route::post('app/quizzes/{quiz}/sections', ['as' => 'sections.store', 'uses' => 'SectionsController@store']);
+Route::put('app/sections/{section}', ['as' => 'sections.update', 'uses' => 'SectionsController@update']);
+Route::delete('app/sections/{section}', ['as' => 'sections.destroy', 'uses' => 'SectionsController@destroy']);
+
+
+## Questions
+Route::get('app/sections/{section}/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
+Route::get('app/quizzes/{quiz}/sections/{section}/edit', ['as' => 'sections.edit', 'uses' => 'SectionsController@edit']);
+Route::post('app/quizzes/{quiz}/sections', ['as' => 'sections.store', 'uses' => 'SectionsController@store']);
+Route::put('app/sections/{section}', ['as' => 'sections.update', 'uses' => 'SectionsController@update']);
+Route::delete('app/sections/{section}', ['as' => 'sections.destroy', 'uses' => 'SectionsController@destroy']);
 
 
 /*

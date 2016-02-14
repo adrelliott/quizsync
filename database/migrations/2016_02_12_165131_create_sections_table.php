@@ -14,8 +14,8 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('section_title');
-            $table->string('section_description')->nullable();
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->string('button_text',24);
             $table->smallInteger('order_by')->unsigned();
             $table->integer('quiz_id')->unsigned();

@@ -10,10 +10,29 @@
 @section('edit-section')
 	@include('quizzes._form', ['button_text' => 'Save Changes'])
 	<hr>
-	<a href="{{ route('sections.create', $quiz->id) }}" role="button" class="btn btn-default btn-block">Add New Section</a>
-	<a href="{{ route('sections.create', $quiz->id) }}" role="button" class="btn btn-default btn-block">Add Multiple Choice Question</a>
+	<a href="{{ route('sections.create', $quiz->id) }}" role="button" class="btn btn-default btn-block">
+		Add New Section
+	</a>
+	<a href="{{ route('questions.create', $quiz->id) }}" role="button" class="btn btn-default btn-block">
+		Add New Question
+	</a>
 @endsection
 
 @section('preview-section')
-	<code>Preview goes here</code>
+	@forelse($quiz->sections as $section)
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a href="{{ route('sections.edit', ['quiz' => $quiz->id, 'section' => $section->id]) }}">
+					{{ $section->title }}
+				</a>
+			</div>
+			<ul class="list-group">
+				<li class="list-group-item">Item 1</li>
+				<li class="list-group-item">Item 2</li>
+				<li class="list-group-item">Item 3</li>
+			</ul>
+		</div>
+	@empty
+		<p class="lead">No sections found (add a section before adding your questions</p>
+	@endforelse
 @endsection

@@ -8,7 +8,7 @@
 @endsection
 
 @section('edit-section')
-	@include('quizzes._form', ['button_text' => 'Create a Quiz!', 'is_create' => true])
+	@include('quizzes._form', ['button_text' => 'Create this Quiz!', 'is_create' => true])
 @endsection
 
 @section('preview-section')

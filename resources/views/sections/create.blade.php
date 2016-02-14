@@ -13,5 +13,4 @@
 
 @section('preview-section')
 	<code>Preview goes here</code>
-	<h2>{{ $quiz->quiz_title }}</h2>
 @endsection
