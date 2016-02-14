@@ -1,4 +1,5 @@
-<!-- Navbar Start  -->
+@if($type == 'app')
+  <!-- Navbar Start  -->
 <div class="bs-component">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -40,3 +41,6 @@
   </nav>
 </div>
 <!-- Navbar End -->
+@else
+
+@endif

@@ -5,25 +5,25 @@
 @endif				
 	<div class="form-group">
 		{{ Form::label('quiz_title', 'Quiz Title') }}
-		{{ Form::text('quiz_title', null, ['class' => 'form-control']) }}
+		{{ Form::text('quiz_title', null, ['class' => 'form-control input-sm']) }}
 	</div>
 	<div class="form-group">
-		{{ Form::label('quiz_description', 'Quiz Title') }}
-		{{ Form::textarea('quiz_description', null, ['class' => 'form-control', 'rows' => 5]) }}
+		{{ Form::label('quiz_description', 'Quiz Description') }}
+		{{ Form::textarea('quiz_description', null, ['class' => 'form-control  input-sm', 'rows' => 3]) }}
 	</div>
-	<div class="radio">
-		<label>
-			{{ Form::radio('is_public', 'false', true) }}
-			This quiz is Public
-		</label>
-	</div>
-	<div class="radio">
-		<label>
-			{{ Form::radio('is_public', 'true') }}
-			This quiz is Private
-		</label>
+	<div class="form-group">
+		<p><b>Quiz status:</b></p>
+	<label class="radio-inline">
+		{{ Form::radio('is_public', 'false', true) }}
+		Draft
+	</label>
+	<label class="radio-inline">
+		{{ Form::radio('is_public', 'true') }}
+		Published
+	</label>
 	</div>
 	<div class="pull-right">
-		{{ Form::submit($button_text, ['class' => 'btn btn-primary']) }}
+		{{ Form::submit($button_text, ['class' => 'btn btn-primary btn-sm']) }}
 	</div>
+	<div class="clearfix"></div>
 {!! Form::close() !!}

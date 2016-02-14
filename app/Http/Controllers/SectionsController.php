@@ -7,16 +7,8 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class QuizzesController extends Controller
+class SectionsController extends Controller
 {
-    protected $quiz;
-
-    public function __construct(Quiz $quiz)
-    {
-        $this->quiz = $quiz;
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +16,7 @@ class QuizzesController extends Controller
      */
     public function index()
     {
-        $quizzes = $this->quiz->getQuizzes();
-        return view('quizzes.index', compact('quizzes'));
+        //
     }
 
     /**
@@ -33,9 +24,9 @@ class QuizzesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Quiz $quiz)
     {
-        return view('quizzes.create');
+        return view('sections.create', compact('quiz'));
     }
 
     /**
@@ -46,8 +37,7 @@ class QuizzesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->quiz->createQuiz($request);
-        return redirect('/app/quizzes');
+        //
     }
 
     /**
@@ -56,9 +46,9 @@ class QuizzesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Quiz $quiz)
+    public function show($id)
     {
-        return view('quizzes.show', compact('quiz'));
+        //
     }
 
     /**
@@ -67,9 +57,9 @@ class QuizzesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz)
+    public function edit($id)
     {
-        return view('quizzes.edit', compact('quiz'));
+        //
     }
 
     /**
@@ -79,7 +69,7 @@ class QuizzesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quiz $quiz)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -93,10 +83,5 @@ class QuizzesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function createSection(Quiz $quiz)
-    {
-        return view('sections.create', compact('quiz'));   
     }
 }

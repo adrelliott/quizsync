@@ -21,7 +21,11 @@ Route::get('home', 'HomeController@index');
 // Route::get('about', 'PagesController@about');
 // Route::get('contact', 'PagesController@contact');
 
-## App Routes (logged in users only)
+/**
+ * All App Routes (logged in users only)
+ */
+
+## Quizzes
 Route::get('app/quizzes', ['as' => 'quizzes.index', 'uses' => 'QuizzesController@index']);
 Route::get('app/quizzes/create', ['as' => 'quizzes.create', 'uses' => 'QuizzesController@create']); 
 Route::get('app/quizzes/{quiz}', ['as' => 'quizzes.show', 'uses' => 'QuizzesController@show']); 
@@ -30,7 +34,8 @@ Route::post('app/quizzes', ['as' => 'quizzes.store', 'uses' => 'QuizzesControlle
 Route::put('app/quizzes/{quizzes}', ['as' => 'quizzes.update', 'uses' => 'QuizzesController@update']);
 Route::delete('app/quizzes/{quizzes}', ['as' => 'quizzes.destroy', 'uses' => 'QuizzesController@destroy']);
 
-
+## Sections
+Route::get('app/quizzes/{quiz}/sections/create', ['as' => 'sections.create', 'uses' => 'SectionsController@create']); 
 
 
 /*

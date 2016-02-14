@@ -15,37 +15,44 @@
               content="Create fun and engaging quizzes that will generate leads, and auot-sync them to your chosen CRM."/>
     @show
 
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    @include('partials._header', ['type' => 'app'])
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    @yield('styles')
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <link rel="shortcut icon" href="{!! asset('assets/site/ico/favicon.ico')  !!} ">
 </head>
 <body>
 
-    @include('partials._appnavbar')
+    @include('partials._navbar', ['type' => 'app'])
 
     <div class="container">
-        @yield('content')
-    </div>
-    
-    @include('partials._appfooter')
+        <div class="row main">
+            @section('page-content')
+                <div class="col-xs-12 title">
+                    @yield('page-title')
+                    <hr>
+                </div>
 
-    <!-- Additional scripts Start -->
-    @yield('scripts')
-    <!-- Additional scripts End -->
+                <div class="col-md-4 edit">
+                    <div class="well well-sm" style="min-height:350px">
+                        @yield('edit-section')
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+                <div class="col-md-8 preview">
+                    <div class="panel panel-default">
+                        <div class="panel-body" style="min-height:350px">
+                            @section('preview')
+                                <div class="preview">
+                                    @yield('preview-section')
+                                </div>
+                            @show
+                        </div>
+                    </div>
+                </div>  
+           @show
+        </div>  
+    </div>
+ 
+    @include('partials._footer', ['type' => 'app'])
 
 </body>
 </html>
