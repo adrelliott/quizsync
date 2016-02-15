@@ -37,13 +37,9 @@ class Section extends Model
     public function createSection(Request $request, Quiz $quiz)
     {
         // Set the basic properties
-		$this->title = $request->title;
-		$this->description = $request->description;
-		$this->button_text = $request->button_text;
-
-		// Set the order_by to the last (order_by starts at 0) & persist
-		$this->order_by = count($quiz->sections);
-        return $quiz->sections()->save($this);
+		$this->fill($request->all());
+        $quiz->sections()->save($this);
+        return $this;
     }
 
     /**
@@ -52,14 +48,12 @@ class Section extends Model
      * @param  Quiz    $quiz    The quiz object
      * @return Quiz           The quiz object with the new section added
      */
-    public function updateSection(Request $request, Section $section)
+    public function updateSection(Request $request)
     {
         // Set the basic properties & persist
-        $section->title = $request->title;
-        $section->description = $request->description;
-        $section->button_text = $request->button_text;
-        $section->order_by = $request->order_by;
-        return $section->save();
+        $this->fill($request->all());
+        $this->save();
+        return $this;
     }
 
 }

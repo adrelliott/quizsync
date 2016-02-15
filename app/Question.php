@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Quiz;
 use App\Answer;
 use App\Section;
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-	protected $fillable = ['title', 'description', 'button_text', 'type', 'order_by'];
+	protected $fillable = ['title', 'description', 'button_text', 'type', 'order_by', 'section_id'];
 
     public function answers()
     {
@@ -20,14 +21,20 @@ class Question extends Model
     	return belongsTo(Section::class);
     }
 
-    public function createQuestion($request, $section)
+    public function createQuestion($request, $quiz)
     {
-    	// Set the properties & persists via the section model)
+    	// Set the properties & persists
     	$this->fill($request->all());
-		$this->order_by = count($section->questions);
-        $this->section_id = $section->id;
-        $this->quiz_id = $section->quiz_id;
+        $this->quiz_id = $quiz->id;
+        $this->save();
+        return $this;
+    }
 
-        return $section->questions()->save($this);
+    public function updateQuestion(Request $request)
+    {
+        // Set the basic properties & persist
+        $this->fill($request->all());
+        $this->save();
+        return $this;
     }
 }

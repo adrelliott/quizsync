@@ -22,6 +22,12 @@
 		Published
 	</label>
 	</div>
+	@if($quiz->is_public == 'true')
+		<div class="form-group">
+     		<label for="url">Public Link to Quiz</label>
+			<input class="form-control" type="text" name="url" value="http://QuizSync/q/{{ $quiz->url}}" readonly>
+		</div>
+	@endif
 	<div class="pull-right">
 		{{ Form::submit($button_text, ['class' => 'btn btn-primary btn-sm']) }}
 	</div>

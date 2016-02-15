@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->string('type',64);
             $table->smallInteger('order_by')->unsigned();
             $table->integer('quiz_id')->unsigned();
-            $table->integer('section_id')->unsigned();
+            $table->integer('section_id')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
             // @todo Add Foreign keys to id and section_id

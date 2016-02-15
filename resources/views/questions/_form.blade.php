@@ -1,7 +1,7 @@
 @if(isset($is_create))
-	{!! Form::open(['route' => ['questions.store', $section->id, 'quiz_id' => $section->quiz_id]]) !!}
+	{!! Form::open(['route' => ['questions.store', $quiz->id]]) !!}
 @else
-	{!! Form::model($section, ['route' => ['questions.update', $question->id, 'quiz_id' => $section->quiz_id], 'method' => 'put']) !!}
+	{!! Form::model($question, ['route' => ['questions.update', $question->id], 'method' => 'put']) !!}
 @endif				
 	<div class="form-group">
 		{{ Form::label('title', 'Question Title') }}
@@ -17,16 +17,29 @@
 			{{ Form::text('button_text', null, ['class' => 'form-control input-sm']) }}
 		</div>	
 	</div>
+	<hr>
 	<div class="form-group">
 		{{ Form::label('type', 'Question Type') }}
 		{{ Form::select('type', ['multi_choice' => 'Mutiple Choice', 'short' => 'Short Answer', 'long' => 'Long Answer', 'yes_no' => 'Yes/No Answer', 'number' => 'Number Answer'], null, ['class' => 'form-control input-sm'], 'multi_choice') }}
 	</div>
-	{{ dd($quiz)}}
+	@if(count($quiz->sections->lists('title')))
+		<div class="form-group">
+			{{ Form::label('section_id', 'Which Section?') }}
+			@if(isset($is_create))
+				{{ Form::select('section_id', $quiz->sections->lists('title', 'id'), count($quiz->sections->lists('title')) + 1, ['class' => 'form-control input-sm']) }}
+			@else
+				{{ Form::select('section_id', $quiz->sections->lists('title', 'id'), null, ['class' => 'form-control input-sm']) }}
+			@endif
+		</div>
+	@endif
 	<div class="form-group">
-		{{ Form::label('section_id', 'Which Section?') }}
-		{{ Form::select('section_id', ['multi_choice' => 'Mutiple Choice', 'short' => 'Short Answer', 'long' => 'Long Answer', 'yes_no' => 'Yes/No Answer', 'number' => 'Number Answer'], null, ['class' => 'form-control input-sm'], 'multi_choice') }}
+		{{ Form::label('order_by', 'What order?') }}
+		<div class="row">
+			<div class="col-sm-4">
+				{{ Form::number('order_by', 0, ['class' => 'form-control input'], 0) }}
+			</div>
+		</div>
 	</div>
-	{{ Form::hidden('order_by') }}
 	<div class="pull-right">
 		{{ Form::submit($button_text, ['class' => 'btn btn-primary btn-sm']) }}
 	</div>

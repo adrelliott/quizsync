@@ -44,15 +44,17 @@ class QuestionsController extends Controller
     }
 
     /**
+     * route: questions.store
+     * url: POST app/quizzes/{quiz}/questions
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Section $section)
+    public function store(Request $request, Quiz $quiz)
     {
-        $this->question->createQuestion($request, $section);
-        return redirect('/app/quizzes/' . $section->quiz_id);
+        $this->question->createQuestion($request, $quiz);
+        return redirect('/app/quizzes/' . $quiz->id);
     }
 
     /**
@@ -72,21 +74,24 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Quiz $quiz, Question $question)
     {
-        //
+        return view('questions.edit', compact('quiz', 'question'));
     }
 
     /**
+     * route: questions.update
+     * urL: PUT app/questions/{question}
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Question $question)
     {
-        //
+        $question->updateQuestion($request);
+        return redirect('/app/quizzes/' . $question->quiz_id);
     }
 
     /**

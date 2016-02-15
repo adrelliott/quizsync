@@ -19,21 +19,26 @@
 @endsection
 
 @section('preview-section')
-	@forelse($quiz->sections as $section)
+	@forelse($quiz->sections->sortBy('order_by') as $section)
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<a href="{{ route('sections.edit', ['quiz' => $quiz->id, 'section' => $section->id]) }}">
-					{{ $section->title }}
-				</a>
+				<h3 class="panel-title">
+					<a href="{{ route('sections.edit', ['quiz' => $quiz->id, 'section' => $section->id]) }}">
+						{{ $section->title }}
+					</a>
+				</h3>
 			</div>
-			<ul class="list-group">
-				@forelse($section->questions as $question)
-					<li class="list-group-item">{{ $question->title }}</li>
-				@empty
-					<li class="list-group-item">No questions defined</li>
-				@endforelse
-			</ul>
 		</div>
+		@forelse($section->questions as $question)
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<a href="{{ route('questions.edit', ['quiz' => $quiz->id, 'question' => $question->id]) }}">
+						{{ $question->title }}
+					</a>
+				</div>
+			</div>
+		@empty
+		@endforelse
 	@empty
 		<p class="lead">No sections found (add a section before adding your questions</p>
 	@endforelse

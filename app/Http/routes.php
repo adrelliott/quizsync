@@ -45,7 +45,7 @@ Route::delete('app/sections/{section}', ['as' => 'sections.destroy', 'uses' => '
 ## Questions
 Route::get('app/quizzes/{quiz}/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
 Route::get('app/quizzes/{quiz}/questions/{question}/edit', ['as' => 'questions.edit', 'uses' => 'QuestionsController@edit']);
-Route::post('app/sections/{section}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
+Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
 Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
 Route::delete('app/questions/{question}', ['as' => 'questions.destroy', 'uses' => 'QuestionsController@destroy']);
 

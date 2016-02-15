@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Section;
+use App\Question;
 use App\Traits\UserTrait;
 use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
@@ -25,6 +26,11 @@ class Quiz extends Model
     	return $this->hasMany(Section::class);
     }
 
+    public function questions()
+    {
+        return $this->hasManyThrough(Question::class, Section::class);
+    }
+
     /*
     Get a paginated list of quizzes
      */
@@ -41,9 +47,7 @@ class Quiz extends Model
     public function createQuiz(Request $request)
     {
  		// Set the basic properties
-		$this->title = $request->title;
-		$this->description = $request->description;
-		$this->is_public = $request->is_public;
+		$this->fill($request->all());
 
 		// Set the user_id & tenant_id (from the Auth::user()) & persist
 		$this->addUserAttributes();
@@ -52,6 +56,15 @@ class Quiz extends Model
 		// Set the quiz url & update the record
 		$this->url = Hashids::encode($this->id);
  		$this->save();
+        return $this;
+    }
+
+    public function updateQuiz(Request $request)
+    {
+        // Set the basic properties
+        $this->fill($request->all());
+        $this->save();
+        return $this;
     }
 
 

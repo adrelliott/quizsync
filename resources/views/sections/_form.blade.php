@@ -17,7 +17,18 @@
 			{{ Form::text('button_text', null, ['class' => 'form-control input-sm']) }}
 		</div>	
 	</div>
-	{{ Form::hidden('order_by') }}
+	<div class="form-group">
+		{{ Form::label('order_by', 'What order?') }}
+		<div class="row">
+			<div class="col-sm-4">
+				@if(isset($is_create))
+					{{ Form::number('order_by', count($quiz->sections) + 1, ['class' => 'form-control input']) }}
+				@else
+					{{ Form::number('order_by', null, ['class' => 'form-control input']) }}
+				@endif
+			</div>
+		</div>
+	</div>
 	<div class="pull-right">
 		{{ Form::submit($button_text, ['class' => 'btn btn-primary btn-sm']) }}
 	</div>

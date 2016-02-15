@@ -27,7 +27,7 @@
 					</div>
 					<div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
 						<ul class="list-group"> 
-							@forelse ($section->questions as $question)
+							@forelse ($section->questions->sortBy('order_by') as $question)
 								<li class="list-group-item">{{ $question->title }}</li>
 							@empty
 								<li class="list-group-item">No answers found</li>

@@ -29,6 +29,7 @@ class SectionsController extends Controller
     }
 
     /**
+     * route: sections.store
      * POST to app/quizzes/{quiz}/sections
      * Store a newly created resource in storage.
      *
@@ -59,7 +60,7 @@ class SectionsController extends Controller
 
     /**
      * route: sections.update
-     * url: PUT app/quizzes/{quiz}/sections/{section}
+     * url: PUT app/sections/{section}
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -68,7 +69,7 @@ class SectionsController extends Controller
      */
     public function update(Request $request, Section $section)
     {
-        $this->section->updateSection($request, $section);
+        $section->updateSection($request);
         return redirect('/app/quizzes/' . $section->quiz_id);
     }
 
