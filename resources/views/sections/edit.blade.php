@@ -8,7 +8,7 @@
 @endsection
 
 @section('edit-section')
-	@include('sections._form', ['button_text' => 'Save Changes'])
+	@include('sections._form', ['button_text' => 'Save Changes', 'is_create' => false])
 @endsection
 
 @section('preview-section')

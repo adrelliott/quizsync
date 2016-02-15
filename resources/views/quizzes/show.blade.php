@@ -8,7 +8,7 @@
 @endsection
 
 @section('edit-section')
-	@include('quizzes._form', ['button_text' => 'Save Changes'])
+	@include('quizzes._form', ['button_text' => 'Save Changes', 'is_create' => false])
 	<hr>
 	<a href="{{ route('sections.create', $quiz->id) }}" role="button" class="btn btn-default btn-block">
 		Add New Section

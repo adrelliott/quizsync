@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Quiz;
-use App\Section;
+use App\Answer;
 use App\Question;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class QuestionsController extends Controller
+class AnswersController extends Controller
 {
+    protected $answer;
     protected $question;
-    protected $quiz;
 
-    public function __construct(Question $question, Quiz $quiz)
+    public function __construct(Answer $answer, Question $question)
     {
+        $this->answer = $answer;
         $this->question = $question;
-        $this->quiz = $quiz;
     }
 
 
@@ -32,29 +31,24 @@ class QuestionsController extends Controller
     }
 
     /**
-     * route: questions.create
-     * URL: app/sections/{section}/questions/create
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Quiz $quiz)
+    public function create(Question $question)
     {
-        return view('questions.create', compact('quiz'));
+        return view('answers.create', compact('question'));
     }
 
     /**
-     * route: questions.store
-     * url: POST app/quizzes/{quiz}/questions
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Quiz $quiz)
+    public function store(Request $request)
     {
-        $question = $this->question->createQuestion($request, $quiz);
-        return redirect('/app/quizzes/' . $quiz->id . '/questions/' . $question->id . '/edit');
+        //
     }
 
     /**
@@ -74,24 +68,21 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz, Question $question)
+     public function edit(Question $question)
     {
-        return view('questions.edit', compact('quiz', 'question'));
+        return view('answers.edit', compact('question'));
     }
 
     /**
-     * route: questions.update
-     * urL: PUT app/questions/{question}
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, $id)
     {
-        $question->updateQuestion($request);
-        return redirect('/app/quizzes/' . $question->quiz_id);
+        //
     }
 
     /**

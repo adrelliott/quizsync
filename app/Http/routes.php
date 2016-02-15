@@ -50,6 +50,14 @@ Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'Q
 Route::delete('app/questions/{question}', ['as' => 'questions.destroy', 'uses' => 'QuestionsController@destroy']);
 
 
+## Answers
+Route::get('app/questions/{question}/answers/create', ['as' => 'answers.create', 'uses' => 'AnswersController@create']);
+Route::get('app/questions/{question}/answers/{answer}/edit', ['as' => 'answers.edit', 'uses' => 'AnswersController@edit']);
+Route::post('app/questions/{question}/answers', ['as' => 'answers.store', 'uses' => 'AnswersController@store']);
+Route::put('app/answers/{answer}', ['as' => 'answers.update', 'uses' => 'AnswersController@update']);
+Route::delete('app/answers/{question}', ['as' => 'answers.destroy', 'uses' => 'AnswersController@destroy']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

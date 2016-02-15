@@ -9,7 +9,7 @@
 
 @section('edit-section')
 	@include('questions._form', ['button_text' => 'Save Changes'])
-	<code>load different templatea ccording to question->type</code>
+	@include('answers._' . $question->type, ['button_text' => 'Save Answers', 'is_create' => false])
 @endsection
 
 @section('preview-section')

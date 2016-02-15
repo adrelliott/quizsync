@@ -1,4 +1,4 @@
-@if(isset($is_create))
+@if($is_create)
 	{!! Form::open(['route' => ['sections.store', $quiz->id]]) !!}
 @else
 	{!! Form::model($section, ['route' => ['sections.update', $section->id, 'quiz_id' => $quiz->id], 'method' => 'put']) !!}
@@ -17,18 +17,16 @@
 			{{ Form::text('button_text', null, ['class' => 'form-control input-sm']) }}
 		</div>	
 	</div>
-	<div class="form-group">
-		{{ Form::label('order_by', 'What order?') }}
-		<div class="row">
-			<div class="col-sm-4">
-				@if(isset($is_create))
-					{{ Form::number('order_by', count($quiz->sections) + 1, ['class' => 'form-control input']) }}
-				@else
-					{{ Form::number('order_by', null, ['class' => 'form-control input']) }}
-				@endif
+	@if(! $is_create)
+		<div class="form-group">
+			{{ Form::label('order_by', 'What order?') }}
+			<div class="row">
+				<div class="col-sm-4">
+				{{ Form::number('order_by', null, ['class' => 'form-control input']) }}
+				</div>
 			</div>
 		</div>
-	</div>
+	@endif
 	<div class="pull-right">
 		{{ Form::submit($button_text, ['class' => 'btn btn-primary btn-sm']) }}
 	</div>

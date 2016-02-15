@@ -23,26 +23,41 @@ class Quiz extends Model
      */
     public function sections()
     {
-    	return $this->hasMany(Section::class);
+        return $this->hasMany(Section::class);
     }
 
+    /**
+     * Relationship: one quiz can have many questions
+     * @return 
+     */
     public function questions()
+    {
+    	return $this->hasMany(Question::class);
+    }
+
+    /**
+     * A quiz can have many sections, and each section can have many questions
+     * @return 
+     */
+    public function questionsBySection()
     {
         return $this->hasManyThrough(Question::class, Section::class);
     }
 
-    /*
-    Get a paginated list of quizzes
+    /**
+     * Get a list of quizzes paginates
+     * @param  integer $limit The number pf quizzes to get (default 5)
+     * @return collection         Collection of quizzes
      */
-    public function getQuizzes()
+    public function getQuizzes($limit = 5)
     {
-    	return $this->paginate(5);
+    	return $this->paginate($limit);
     }
 
     /**
-     * Stores a new quiz
+     * Stores a new quiz row
      * @param  Request $request The request object
-
+     * @return model Return s newly created quiz model
      */
     public function createQuiz(Request $request)
     {
@@ -59,6 +74,11 @@ class Quiz extends Model
         return $this;
     }
 
+    /**
+     * Updates an existing quiz row
+     * @param  Request $request The user input
+     * @return model           The updated quiz model
+     */
     public function updateQuiz(Request $request)
     {
         // Set the basic properties

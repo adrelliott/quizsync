@@ -10,7 +10,7 @@
 
 		<div class="col-md-4">
 			<div class="well well-sm" style="min-height:350px">
-				@include('quizzes._form', ['button_text' => 'Save Changes!'])
+				@include('quizzes._form', ['button_text' => 'Save Changes!', 'is_create' => false])
 				<div class="clearfix"></div>
 			</div>
 

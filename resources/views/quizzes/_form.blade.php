@@ -1,4 +1,4 @@
-@if(isset($is_create))
+@if($is_create)
 	{!! Form::open(['route' => 'quizzes.store']) !!}
 @else
 	{!! Form::model($quiz, ['route' => ['quizzes.update', $quiz->id], 'method' => 'put']) !!}
@@ -22,7 +22,7 @@
 		Published
 	</label>
 	</div>
-	@if($quiz->is_public == 'true')
+	@if( isset($quiz) && $quiz->is_public == 'true')
 		<div class="form-group">
      		<label for="url">Public Link to Quiz</label>
 			<input class="form-control" type="text" name="url" value="http://QuizSync/q/{{ $quiz->url}}" readonly>
