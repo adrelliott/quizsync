@@ -18,8 +18,8 @@ class CreateAnswersTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('is_correct')->nullable();
             $table->integer('score')->nullable();
+            $table->smallInteger('order_by')->unsigned()->nullable();
             $table->integer('question_id')->unsigned();
-            $table->smallInteger('order_by')->unsigned();
             $table->softDeletes();
             $table->timestamps();
             // @todo Add Foreign keys to question_id

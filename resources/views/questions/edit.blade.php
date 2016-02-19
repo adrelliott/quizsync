@@ -8,8 +8,13 @@
 @endsection
 
 @section('edit-section')
-	@include('questions._form', ['button_text' => 'Save Changes'])
-	@include('answers._' . $question->type, ['button_text' => 'Save Answers', 'is_create' => false])
+	@include('questions._form', ['button_text' => 'Save Changes', 'is_create' => false])		
+	<h4>Answers:</h4>
+	<div class="panel panel-default">	
+		<div class="panel-body">
+			@include('answers._' . $question->type, ['button_text' => 'Save Answers'])
+		</div>
+	</div>	
 @endsection
 
 @section('preview-section')

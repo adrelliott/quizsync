@@ -14,17 +14,17 @@ class Question extends Model
 
     public function answers()
     {
-    	return hasMany(Answer::class);
+    	return $this->hasMany(Answer::class);
     }
 
     public function section()
     {
-        return belongsTo(Section::class);
+        return $this->belongsTo(Section::class);
     }
 
     public function quiz()
     {
-    	return belongsTo(Quiz::class);
+    	return $this->belongsTo(Quiz::class);
     }
 
     public function createQuestion(Request $request, Quiz $quiz)
@@ -39,19 +39,7 @@ class Question extends Model
         // Save (using the relationship on quiz & return the model
         $quiz->questions()->save($this);
         return $this;
-
-
-    	// // Set the main properties
-    	// $this->fill($request->all());
-
-     //    // Set question order (add to end) and persist
-     //    $this->order_by = count($quiz->questions) + 1;
-     //    $this->save();
-
-        // return $this;
     }
-
-
 
     public function updateQuestion(Request $request)
     {
@@ -61,5 +49,20 @@ class Question extends Model
         // Save & return the model
         $this->save();
         return $this;
+    }
+
+    public function syncAnswers($request)
+    {
+        // Delete any existing answers for this question
+        $this->answers()->delete();
+        
+        // Take the request and create new answers
+        $newAnswers = [];
+        foreach($request->answers as $answer)
+            $newAnswers[] = new Answer($answer);
+
+        // Save the new questions via the answers() method on Question, & return Question
+        $this->answers()->saveMany($newAnswers);
+        return $this->fresh();
     }
 }

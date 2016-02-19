@@ -53,8 +53,11 @@ Route::delete('app/questions/{question}', ['as' => 'questions.destroy', 'uses' =
 ## Answers
 Route::get('app/questions/{question}/answers/create', ['as' => 'answers.create', 'uses' => 'AnswersController@create']);
 Route::get('app/questions/{question}/answers/{answer}/edit', ['as' => 'answers.edit', 'uses' => 'AnswersController@edit']);
-Route::post('app/questions/{question}/answers', ['as' => 'answers.store', 'uses' => 'AnswersController@store']);
-Route::put('app/answers/{answer}', ['as' => 'answers.update', 'uses' => 'AnswersController@update']);
+
+// Note the change in the pattern here - we're updating multiple answers at once
+Route::post('app/questions/{question}/answers/multiple', ['as' => 'answers.store.multiple', 'uses' => 'AnswersController@storeMultiple']);
+// Route::put('app/questions/{question}/answers/multiple', ['as' => 'answers.update.multiple', 'uses' => 'AnswersController@updateMultiple']);
+
 Route::delete('app/answers/{question}', ['as' => 'answers.destroy', 'uses' => 'AnswersController@destroy']);
 
 

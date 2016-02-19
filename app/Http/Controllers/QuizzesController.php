@@ -47,7 +47,7 @@ class QuizzesController extends Controller
     public function store(Request $request)
     {
         $quiz = $this->quiz->createQuiz($request);
-        return redirect('/app/quizzes/'.$quiz->id);
+        return redirect()->route('quizzes.show', ['quiz' => $quiz->id]);
     }
 
     /**
@@ -82,7 +82,7 @@ class QuizzesController extends Controller
     public function update(Request $request, Quiz $quiz)
     {
         $quiz->updateQuiz($request);
-        return redirect('/app/quizzes/'.$quiz->id);
+        return redirect()->route('quizzes.show', ['quiz' => $quiz->id]);
     }
 
     /**

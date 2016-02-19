@@ -49,6 +49,18 @@ class AnswersController extends Controller
     public function store(Request $request)
     {
         //
+    }  
+
+    /**
+     * Store a number of new answers
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeMultiple(Request $request, Question $question)
+    {
+        $question->syncAnswers($request);
+        return redirect()->route('questions.edit', ['quiz' => $question->quiz->id, 'question' => $question->id]);
     }
 
     /**

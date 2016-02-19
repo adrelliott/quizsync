@@ -1,4 +1,4 @@
-{{ dd('is_create')}}
+
 @if($is_create)
 	{!! Form::open(['route' => ['questions.store', $quiz->id]]) !!}
 @else

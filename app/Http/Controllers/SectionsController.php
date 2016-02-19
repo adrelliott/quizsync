@@ -39,7 +39,7 @@ class SectionsController extends Controller
     public function store(Request $request, Quiz $quiz)
     {
         $this->section->createSection($request, $quiz);
-        return redirect('/app/quizzes/' . $quiz->id);
+        return redirect()->route('quizzes.show', ['quiz' => $quiz]);
     }
 
     
@@ -70,7 +70,7 @@ class SectionsController extends Controller
     public function update(Request $request, Section $section)
     {
         $section->updateSection($request);
-        return redirect('/app/quizzes/' . $section->quiz_id);
+        return redirect()->route('quizzes.show', ['quiz' => $section->quiz_id]);
     }
 
 
