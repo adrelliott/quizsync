@@ -8,7 +8,7 @@
 @endsection
 
 @section('edit-section')
-	@include('answers._' . $question->type, ['button_text' => 'Create answer!', 'is_create' => true])
+	@include('answers._' . $question->type, ['button_text' => 'Create answer!'])
 @endsection
 
 @section('preview-section')

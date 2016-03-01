@@ -6,7 +6,7 @@
 @endif				
 	<div class="form-group">
 		{{ Form::label('title', 'Question Title') }}
-		{{ Form::text('title', null, ['class' => 'form-control input-sm']) }}
+		{{ Form::text('title', null, ['class' => 'form-control input-sm copyFrom']) }}
 	</div>
 	<div class="form-group">
 		{{ Form::label('description', 'Question Description') }}
@@ -21,7 +21,7 @@
 
 	<div class="form-group">
 		{{ Form::label('type', 'Question Type') }}
-		{{ Form::select('type', ['multi_choice' => 'Mutiple Choice', 'short' => 'Short Answer', 'long' => 'Long Answer', 'yes_no' => 'Yes/No Answer', 'number' => 'Number Answer'], null, ['class' => 'form-control input-sm'], 'multi_choice') }}
+		{{ Form::select('type', ['multi_choice' => 'Mutiple Choice', 'diagnostic' => 'Diagnostic', 'short' => 'Short Answer', 'long' => 'Long Answer', 'yes_no' => 'Yes/No Answer', 'number' => 'Number Answer', 'rating' => 'Rating/scale'], null, ['class' => 'form-control input-sm'], 'multi_choice') }}
 	</div>
 	@if(count($quiz->sections->lists('title')))
 		<div class="form-group">

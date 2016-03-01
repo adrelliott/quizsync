@@ -12,6 +12,10 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 	@endif
+	<!-- Not hosted on CDNs -->
+	<link href="{{ asset('css/bootstrap-switch.min.js')}}" rel="stylesheet" type="text/css">
+
+	<!-- Styles end -->
 @else
 	<h1>site headers go here </h1>
 	<code>edit this in partials._header</code>

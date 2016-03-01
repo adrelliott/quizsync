@@ -9,6 +9,11 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 	@endif
+	
+	<!-- Not hosted on CDNs -->
+	<script src="{{ asset('js/bootstrap-switch.min.js')}}"></script>
+	<script src="{{ asset('js/app.js')}}"></script>
+	
 	<!-- _footer Scripts End -->
 @else
 	<code>add site footer stuff in partials._footer</code>

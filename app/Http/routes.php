@@ -18,8 +18,6 @@ Route::get('/', function () {
 ## Site Routes (public facing)
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-// Route::get('about', 'PagesController@about');
-// Route::get('contact', 'PagesController@contact');
 
 /**
  * All App Routes (logged in users only)
@@ -42,23 +40,22 @@ Route::put('app/sections/{section}', ['as' => 'sections.update', 'uses' => 'Sect
 Route::delete('app/sections/{section}', ['as' => 'sections.destroy', 'uses' => 'SectionsController@destroy']);
 
 
-## Questions
+## Questions & associated answers
 Route::get('app/quizzes/{quiz}/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
 Route::get('app/quizzes/{quiz}/questions/{question}/edit', ['as' => 'questions.edit', 'uses' => 'QuestionsController@edit']);
 Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
 Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
 Route::delete('app/questions/{question}', ['as' => 'questions.destroy', 'uses' => 'QuestionsController@destroy']);
-
-
-## Answers
+// Create answer rows
 Route::get('app/questions/{question}/answers/create', ['as' => 'answers.create', 'uses' => 'AnswersController@create']);
 Route::get('app/questions/{question}/answers/{answer}/edit', ['as' => 'answers.edit', 'uses' => 'AnswersController@edit']);
-
-// Note the change in the pattern here - we're updating multiple answers at once
-Route::post('app/questions/{question}/answers/multiple', ['as' => 'answers.store.multiple', 'uses' => 'AnswersController@storeMultiple']);
-// Route::put('app/questions/{question}/answers/multiple', ['as' => 'answers.update.multiple', 'uses' => 'AnswersController@updateMultiple']);
-
+Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
+Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
 Route::delete('app/answers/{question}', ['as' => 'answers.destroy', 'uses' => 'AnswersController@destroy']);
+// These following route is for multiple choices & quizzes - we're updating multiple answers at once
+Route::post('app/questions/{question}/answers/multiple', ['as' => 'answers.store.multiple', 'uses' => 'AnswersController@storeMultiple']);
+
+
 
 
 /*

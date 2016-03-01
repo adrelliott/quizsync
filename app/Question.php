@@ -55,11 +55,15 @@ class Question extends Model
     {
         // Delete any existing answers for this question
         $this->answers()->delete();
-        
+
         // Take the request and create new answers
         $newAnswers = [];
-        foreach($request->answers as $answer)
-            $newAnswers[] = new Answer($answer);
+        foreach($request->answers as $key => $answer)
+            $newAnswers[$key] = new Answer($answer);
+
+        // Now set a correct answer, if passed
+        if($request->input('is_correct', false) != 'false')
+            $newAnswers[$request->is_correct]->is_correct = true;
 
         // Save the new questions via the answers() method on Question, & return Question
         $this->answers()->saveMany($newAnswers);

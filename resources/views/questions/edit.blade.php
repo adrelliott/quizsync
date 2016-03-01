@@ -8,7 +8,16 @@
 @endsection
 
 @section('edit-section')
-	@include('questions._form', ['button_text' => 'Save Changes', 'is_create' => false])		
+	<div class="panel panel-sm">
+		<div class="panel-body">
+			<a data-toggle="collapse" href="#editQuestion" aria-expanded="false" aria-controls="editQuestion">
+				<span class="caret"></span> Edit the question
+			</a>
+			<div class="collapse" id="editQuestion">
+				@include('questions._form', ['button_text' => 'Save Changes', 'is_create' => false])
+			</div>
+		</div>
+	</div>
 	<h4>Answers:</h4>
 	<div class="panel panel-default">	
 		<div class="panel-body">
