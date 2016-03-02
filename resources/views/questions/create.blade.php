@@ -12,5 +12,5 @@
 @endsection
 
 @section('preview-section')
-	@include('questions.preview', ['is_create' => true])
+	@include('questions._preview', ['is_create' => true])
 @endsection

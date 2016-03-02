@@ -8,8 +8,16 @@
 @endsection
 
 @section('edit-section')
-	@include('quizzes._form', ['button_text' => 'Save Changes', 'is_create' => false])
-	<hr>
+	<div class="panel panel-sm">
+		<div class="panel-body">
+			<a data-toggle="collapse" href="#editQuiz" aria-expanded="false" aria-controls="editQuiz">
+				<span class="caret"></span> Edit the Quiz
+			</a>
+			<div class="collapse" id="editQuiz">
+				@include('quizzes._form', ['button_text' => 'Save Changes!', 'is_create' => false])
+			</div>
+		</div>
+	</div>
 	<a href="{{ route('sections.create', $quiz->id) }}" role="button" class="btn btn-default btn-block">
 		Add New Section
 	</a>
@@ -19,27 +27,5 @@
 @endsection
 
 @section('preview-section')
-	@forelse($quiz->sections->sortBy('order_by') as $section)
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<a href="{{ route('sections.edit', ['quiz' => $quiz->id, 'section' => $section->id]) }}">
-						{{ $section->title }}
-					</a>
-				</h3>
-			</div>
-		</div>
-		@forelse($section->questions as $question)
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<a href="{{ route('questions.edit', ['quiz' => $quiz->id, 'question' => $question->id]) }}">
-						{{ $question->title }}
-					</a>
-				</div>
-			</div>
-		@empty
-		@endforelse
-	@empty
-		<p class="lead">No sections found (add a section before adding your questions</p>
-	@endforelse
+	@include('quizzes._preview', ['is_create' => false])
 @endsection

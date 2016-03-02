@@ -12,6 +12,5 @@
 @endsection
 
 @section('preview-section')
-	<h3>{{ $question->title }}</h3>
-	<code>Preview goes here</code>
+	@include('answers._preview', ['is_create' => true])
 @endsection

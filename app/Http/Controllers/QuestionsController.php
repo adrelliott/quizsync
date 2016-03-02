@@ -22,16 +22,6 @@ class QuestionsController extends Controller
 
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * route: questions.create
      * URL: app/sections/{section}/questions/create
      * Show the form for creating a new resource.
@@ -54,18 +44,7 @@ class QuestionsController extends Controller
     public function store(Request $request, Quiz $quiz)
     {
         $question = $this->question->createQuestion($request, $quiz);
-        return redirect()->route('answers.create', ['quiz' => $question->id]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('answers.create', ['question' => $question->id]);
     }
 
     /**

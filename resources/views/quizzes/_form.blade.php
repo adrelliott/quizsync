@@ -25,7 +25,7 @@
 	@if( isset($quiz) && $quiz->is_public == 'true')
 		<div class="form-group">
      		<label for="url">Public Link to Quiz</label>
-			<input class="form-control" type="text" name="url" value="http://QuizSync/q/{{ $quiz->url}}" readonly>
+			<input class="form-control" type="text" name="url" value="http://Quizmania.net/{{ $quiz->url}}" readonly>
 		</div>
 	@endif
 	<div class="pull-right">

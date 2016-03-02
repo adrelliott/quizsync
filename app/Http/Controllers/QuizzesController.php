@@ -95,9 +95,4 @@ class QuizzesController extends Controller
     {
         //
     }
-
-    public function createSection(Quiz $quiz)
-    {
-        return view('sections.create', compact('quiz'));   
-    }
 }

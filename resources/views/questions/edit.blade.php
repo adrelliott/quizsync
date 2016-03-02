@@ -27,10 +27,5 @@
 @endsection
 
 @section('preview-section')
-	<div class="row">
-		<div class="col-xs-12">
-			<code>Preview goes here...</code>
-		</div>
-		<code>answers go here</code>
-	</div>
+	@include('questions._preview', ['is_create' => false])
 @endsection

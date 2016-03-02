@@ -19,7 +19,7 @@
 							<tr>
 								<td><a href="{{ route('quizzes.show', $quiz->id) }}"></a>{{ $quiz->title }}</td>
 								<td>{{ $quiz->description }}</td>
-								<td>QuizSync.com/to/{{ $quiz->url }}</td>
+								<td>Quizmania.net/{{ $quiz->url }}</td>
 							</tr>
 						@endforeach
 					</tbody>

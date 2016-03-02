@@ -12,6 +12,13 @@
 @endsection
 
 @section('preview-section')
+	@include('sections._preview', ['is_create' => false])
+@endsection
+
+
+
+
+@section('preview-section-old')
 	<div class="row">
 		<div class="col-xs-12">
 			<code>Preview goes here...</code>

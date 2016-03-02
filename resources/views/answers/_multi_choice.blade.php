@@ -4,7 +4,7 @@
 	 	<thead>
 	 		<tr>
 	 			<th>Answer</th>
-	 			<th>Answer?</th>
+	 			<th>Correct?</th>
 	 		</tr>
 	 	</thead>
 	 	<tbody>
@@ -21,7 +21,7 @@
 			@empty
 				<tr>
 					<td>{{ Form::text('answers[1][answer]', null, ['class' => 'form-control input-sm']) }}</td>
-					<td>{{ Form::radio('is_correct', 1) }}</td>
+					<td>{{ Form::radio('is_correct', 1, true) }}</td>
 				</tr>
 				<tr>
 					<td>{{ Form::text('answers[2][answer]', null, ['class' => 'form-control input-sm']) }}</td>

@@ -9,10 +9,8 @@
 
 @section('edit-section')
 	@include('answers._' . $question->type, ['button_text' => 'Create answer!'])
-}
-}
 @endsection
 
 @section('preview-section')
-	<code>Preview goes here</code>
+	@include('answers._preview', ['is_create' => false])
 @endsection

@@ -6,14 +6,14 @@
 	<!-- Styles -->
 	@if(env('APP_ENV') == 'local')
 		<link href="{{ asset('css/app.css')}}" rel="stylesheet" type="text/css">
-		<link href="{{ asset('css/bootstrap.min.js')}}" rel="stylesheet" type="text/css">
-		<link href="{{ asset('css/jasny-bootstrap.min.js')}}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('css/jasny-bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	@else
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 	@endif
 	<!-- Not hosted on CDNs -->
-	<link href="{{ asset('css/bootstrap-switch.min.js')}}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css">
 
 	<!-- Styles end -->
 @else
