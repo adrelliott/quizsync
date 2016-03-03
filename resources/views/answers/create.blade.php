@@ -8,7 +8,22 @@
 @endsection
 
 @section('edit-section')
-	@include('answers._' . $question->type, ['button_text' => 'Create answer!'])
+	<h4>Create some answers:</h4>
+	<div class="panel panel-default">	
+		<div class="panel-body">
+			@include('answers._' . $question->type, ['is_create' => true])
+		</div>
+	</div>
+	<div class="panel panel-sm">
+		<div class="panel-body">
+			<a data-toggle="collapse" href="#editQuestion" aria-expanded="false" aria-controls="editQuestion">
+				<span class="caret"></span> Edit the question
+			</a>
+			<div class="collapse" id="editQuestion">
+				@include('questions._form', ['button_text' => 'Save Changes', 'is_create' => true])
+			</div>
+		</div>
+	</div>
 @endsection
 
 @section('preview-section')

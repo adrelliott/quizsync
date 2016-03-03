@@ -10,20 +10,28 @@
 @section('edit-section')
 	<div class="panel panel-sm">
 		<div class="panel-body">
-			<a data-toggle="collapse" href="#editQuestion" aria-expanded="false" aria-controls="editQuestion">
-				<span class="caret"></span> Edit the question
-			</a>
-			<div class="collapse" id="editQuestion">
+			@include('questions._form', ['button_text' => 'Save Changes', 'is_create' => false])
+		</div>
+	</div>
+@endsection
+
+
+@section('edit-section -deletemeeeeeeeeeeee')
+	<div class="panel panel-sm">
+		<div class="panel-body">
+			@if($question->type == 'multichoice' || $question->type == 'diagnostic')
+				<a data-toggle="collapse" href="#editQuestion" aria-expanded="false" aria-controls="editQuestion">
+					<span class="caret"></span> Edit the question
+				</a>
+				<div class="collapse" id="editQuestion">
+			@else
+				<div>
+			@endif
 				@include('questions._form', ['button_text' => 'Save Changes', 'is_create' => false])
 			</div>
 		</div>
 	</div>
-	<h4>Answers:</h4>
-	<div class="panel panel-default">	
-		<div class="panel-body">
-			@include('answers._' . $question->type, ['button_text' => 'Save Answers'])
-		</div>
-	</div>	
+	@include('answers._form')
 @endsection
 
 @section('preview-section')

@@ -40,19 +40,21 @@ Route::put('app/sections/{section}', ['as' => 'sections.update', 'uses' => 'Sect
 Route::delete('app/sections/{section}', ['as' => 'sections.destroy', 'uses' => 'SectionsController@destroy']);
 
 
-## Questions & associated answers
+## Questions
 Route::get('app/quizzes/{quiz}/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
 Route::get('app/quizzes/{quiz}/questions/{question}/edit', ['as' => 'questions.edit', 'uses' => 'QuestionsController@edit']);
 Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
 Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
 Route::delete('app/questions/{question}', ['as' => 'questions.destroy', 'uses' => 'QuestionsController@destroy']);
-// Create answer rows
+
+// Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
+// Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
+
+## Answers (applies to Multichoice and Diagnostic only)
 Route::get('app/questions/{question}/answers/create', ['as' => 'answers.create', 'uses' => 'AnswersController@create']);
-Route::get('app/questions/{question}/answers/{answer}/edit', ['as' => 'answers.edit', 'uses' => 'AnswersController@edit']);
-Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
-Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
-Route::delete('app/answers/{question}', ['as' => 'answers.destroy', 'uses' => 'AnswersController@destroy']);
-// These following route is for multiple choices & quizzes - we're updating multiple answers at once
+Route::get('app/questions/{question}/answers/edit', ['as' => 'answers.edit', 'uses' => 'AnswersController@edit']);
+// (Note the deviation from RESTful endpoints in the above route - we're actually editing multiple answers here. 
+// So the following route 'syncs' all answers on the question model 
 Route::post('app/questions/{question}/answers/multiple', ['as' => 'answers.store.multiple', 'uses' => 'AnswersController@storeMultiple']);
 
 

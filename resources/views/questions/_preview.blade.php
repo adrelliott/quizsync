@@ -6,5 +6,5 @@
 @else
 	<h1>{{ $question->title }}</h1>
 	<p class="lead">{{ $question->description }}</p>
-	@include('answers._preview_multichoice')
+	@include('questions.previews._' . $question->type)
 @endif

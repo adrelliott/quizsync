@@ -21,7 +21,7 @@
 
 	<div class="form-group">
 		{{ Form::label('type', 'Question Type') }}
-		{{ Form::select('type', ['multi_choice' => 'Mutiple Choice', 'diagnostic' => 'Diagnostic', 'short' => 'Short Answer', 'long' => 'Long Answer', 'yes_no' => 'Yes/No Answer', 'number' => 'Number Answer', 'rating' => 'Rating/scale'], null, ['class' => 'form-control input-sm'], 'multi_choice') }}
+		{{ Form::select('type', ['short' => 'Short Answer', 'long' => 'Long Answer', 'yesno' => 'Yes/No Answer', 'number' => 'Number Answer', 'rating' => 'Rating/scale', 'multichoice' => 'Mutiple Choice', 'diagnostic' => 'Diagnostic'], null, ['class' => 'form-control input-sm'], 'multi_choice') }}
 	</div>
 	@if(count($quiz->sections->lists('title')))
 		<div class="form-group">

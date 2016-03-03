@@ -1,4 +1,4 @@
-<h4>Multi choice</h4>
+<h4>Create your answers here:</h4>
 {!! Form::open(['route' => ['answers.store.multiple', $question->id]]) !!}
 	<table class="table table-responsive table-condensed">
 	 	<thead>
@@ -39,7 +39,7 @@
 	 	</tbody>
 	</table>
 	<div class="pull-right">
-		{{ Form::submit($button_text, ['class' => 'btn btn-primary btn-sm']) }}
+		{{ Form::submit('Save Answers', ['class' => 'btn btn-primary btn-sm']) }}
 	</div>
 	<div class="clearfix"></div>
 {!! Form::close() !!}

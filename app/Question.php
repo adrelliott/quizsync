@@ -62,7 +62,7 @@ class Question extends Model
             $newAnswers[$key] = new Answer($answer);
 
         // Now set a correct answer, if passed
-        if($request->input('is_correct', false) != 'false')
+        if($request->has('is_correct'))
             $newAnswers[$request->is_correct]->is_correct = true;
 
         // Save the new questions via the answers() method on Question, & return Question
