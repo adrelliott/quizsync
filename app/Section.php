@@ -32,33 +32,12 @@ class Section extends Model
      * Create a new section, by saving via an existing Quiz model
      * @param  Request $request The input 
      * @param  Quiz    $quiz    The quiz object
-     * @return Model           The new section object 
-     */
-    public function createSection(Request $request, Quiz $quiz)
-    {
-        // Set the basic properties
-		$this->fill($request->all());
-        // Make sure order_by isn't blank
-        if(empty($request->order_by)) 
-            $this->order_by = count($quiz->sections) + 1;
-
-        // Save (using the relatonship on quiz & return the model
-        $quiz->sections()->save($this);
-        return $this;
-    }
-
-    /**
-     * Create a new section, by saving via an existing Quiz model
-     * @param  Request $request The input 
-     * @param  Quiz    $quiz    The quiz object
      * @return model           The updated section model
      */
     public function updateSection(Request $request)
     {
-        // Set the basic properties
+        // Set the basic properties, save & return
         $this->fill($request->all());
-
-        // Save & return the model
         $this->save();
         return $this;
     }

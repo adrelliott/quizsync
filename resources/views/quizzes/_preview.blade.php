@@ -8,7 +8,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<a href="{{ route('sections.edit', ['quiz' => $quiz->id, 'section' => $section->id]) }}">
+					<a href="{{ route('sections.edit', ['section' => $section->id]) }}">
 						{{ $section->title }}
 					</a>
 				</h3>
@@ -17,7 +17,7 @@
 				<ul class="list-group">
 					@foreach($section->questions as $question)
 						<li class="list-group-item">
-							<a href="{{ route('questions.edit', ['quiz' => $quiz->id, 'question' => $question->id]) }}">
+							<a href="{{ route('questions.edit', ['question' => $question->id]) }}">
 								{{ $question->title }}
 							</a>		
 						</li>
@@ -27,7 +27,8 @@
 		</div>
 	@empty
 		<div class="alert alert-warning" role="alert">
-			<p>No Sections or Questions found!</p>
+			<p class="lead">No Sections found!</p>
+			<p>(Create a section before creating questions)</p>
 		</div>
 	@endforelse
 @endif

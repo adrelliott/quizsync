@@ -1,4 +1,4 @@
-<label for="rating">You can rate something from 1 to 5 here</label>
+<label for="rating">Please select a rating, and press the button to continue...</label>
 <br>
 <label class="radio-inline">
 	<input type="radio" name="rating" id="rating1" value="1"> 1
