@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
+
 	/**
 	 * Adds a method to append the user_id and tenant_id onto a record
 	 */
@@ -18,8 +19,10 @@ class Quiz extends Model
 
 	protected $fillable = ['title', 'description', 'is_public'];
 
+
+
     /*
-    * Realtionship: one quiz can have many sections
+    * Relationships: one quiz can have many sections
      */
     public function sections()
     {
@@ -68,8 +71,10 @@ class Quiz extends Model
 		$this->addUserAttributes();
 		$this->save(); //sets the row id - rqd for the hash below
 
-		// Set the quiz url & update the record
+		// Set the quiz url
 		$this->url = Hashids::encode($this->id);
+
+        // Update the record
  		$this->save();
         return $this;
     }
@@ -85,6 +90,44 @@ class Quiz extends Model
         $this->fill($request->all());
         $this->save();
         return $this;
+    }
+
+     /**
+     * Create a new section
+     * @param  Request $request The input 
+     * @return Model           Quiz with new model 
+     */
+    public function createSection(Request $request)
+    {
+        // New up a Section model & set the basic properties
+        $section = new Section($request->all());
+
+        // Make sure order_by isn't blank
+        if(empty($request->order_by)) 
+            $section->order_by = count($this->sections) + 1;
+
+        // Save (using the relatonship on quiz) & return the model
+        $this->sections()->save($section);
+        return $section->fresh();
+    }
+
+    /**
+     * Create new related question
+     * @param  Request $request The input
+     * @return Question         The question object
+     */
+    public function createQuestion(Request $request)
+    {
+        // New up a Questions model & set the basic properties
+        $question = new Question($request->all());
+
+        // Make sure order_by isn't blank
+        if( ! isset($request->order_by)) 
+            $question->order_by = count($this->questions) + 1;
+
+        // Save (using the relationship on quiz & return the model
+        $this->questions()->save($question);
+        return $question->fresh();
     }
 
 

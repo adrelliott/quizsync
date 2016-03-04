@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('page-title')
-	<h1 class="title">Create a New Question</h1>
+	<h1 class="title">Create a New Section</h1>
     <p class="lead">
-    	Create a new question for your quiz here, or <a href="{{ route('quizzes.show', $quiz->id) }}">go back to the quiz.</a>.
-	</p> 
+    	Create a new section for your quiz here, or <a href="{{ route('quizzes.show', $quiz->id) }}">go back to the quiz.</a>.
+	</p>
 @endsection
 
 @section('edit-section')

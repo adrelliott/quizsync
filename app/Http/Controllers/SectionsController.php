@@ -38,8 +38,8 @@ class SectionsController extends Controller
      */
     public function store(Request $request, Quiz $quiz)
     {
-        $this->section->createSection($request, $quiz);
-        return redirect()->route('quizzes.show', ['quiz' => $quiz]);
+        $section = $quiz->createSection($request);
+        return redirect()->route('sections.edit', ['quiz' => $section->id]);
     }
 
     
@@ -52,9 +52,9 @@ class SectionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz, Section $section)
+    public function edit(Section $section)
     {
-        return view('sections.edit', compact('quiz', 'section'));
+        return view('sections.edit', compact('section'));
     }
 
 
@@ -69,8 +69,8 @@ class SectionsController extends Controller
      */
     public function update(Request $request, Section $section)
     {
-        $section->updateSection($request);
-        return redirect()->route('quizzes.show', ['quiz' => $section->quiz_id]);
+        $section = $section->updateSection($request);
+        return redirect()->route('sections.edit', ['quiz' => $section->id]);
     }
 
 

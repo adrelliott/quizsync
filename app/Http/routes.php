@@ -34,21 +34,17 @@ Route::delete('app/quizzes/{quiz}', ['as' => 'quizzes.destroy', 'uses' => 'Quizz
 
 ## Sections
 Route::get('app/quizzes/{quiz}/sections/create', ['as' => 'sections.create', 'uses' => 'SectionsController@create']);
-Route::get('app/quizzes/{quiz}/sections/{section}/edit', ['as' => 'sections.edit', 'uses' => 'SectionsController@edit']);
 Route::post('app/quizzes/{quiz}/sections', ['as' => 'sections.store', 'uses' => 'SectionsController@store']);
+Route::get('app/sections/{section}/edit', ['as' => 'sections.edit', 'uses' => 'SectionsController@edit']);
 Route::put('app/sections/{section}', ['as' => 'sections.update', 'uses' => 'SectionsController@update']);
 Route::delete('app/sections/{section}', ['as' => 'sections.destroy', 'uses' => 'SectionsController@destroy']);
 
-
 ## Questions
 Route::get('app/quizzes/{quiz}/questions/create', ['as' => 'questions.create', 'uses' => 'QuestionsController@create']);
-Route::get('app/quizzes/{quiz}/questions/{question}/edit', ['as' => 'questions.edit', 'uses' => 'QuestionsController@edit']);
+Route::get('app/questions/{question}/edit', ['as' => 'questions.edit', 'uses' => 'QuestionsController@edit']);
 Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
 Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
 Route::delete('app/questions/{question}', ['as' => 'questions.destroy', 'uses' => 'QuestionsController@destroy']);
-
-// Route::post('app/quizzes/{quiz}/questions', ['as' => 'questions.store', 'uses' => 'QuestionsController@store']);
-// Route::put('app/questions/{question}', ['as' => 'questions.update', 'uses' => 'QuestionsController@update']);
 
 ## Answers (applies to Multichoice and Diagnostic only)
 Route::get('app/questions/{question}/answers/create', ['as' => 'answers.create', 'uses' => 'AnswersController@create']);

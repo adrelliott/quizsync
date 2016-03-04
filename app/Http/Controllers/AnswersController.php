@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
 use App\Question;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -10,28 +9,11 @@ use App\Http\Controllers\Controller;
 
 class AnswersController extends Controller
 {
-    protected $answer;
-    protected $question;
-
-    public function __construct(Answer $answer, Question $question)
-    {
-        $this->answer = $answer;
-        $this->question = $question;
-    }
-
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
+     * Show the form for creating new questions.
+     * As we sync() the answers (and delete all existing ones) 
+     * this also doubles as the edit form).
      *
      * @return \Illuminate\Http\Response
      */
@@ -41,17 +23,6 @@ class AnswersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }  
-
-    /**
      * Store a number of new answers
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,20 +30,10 @@ class AnswersController extends Controller
      */
     public function storeMultiple(Request $request, Question $question)
     {
-        $question->syncAnswers($request);
-        return redirect()->route('questions.edit', ['quiz' => $question->quiz->id, 'question' => $question->id]);
+        $question = $question->syncAnswers($request);
+        return redirect()->route('questions.edit', ['question' => $question->id]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -80,31 +41,9 @@ class AnswersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function edit(Question $question)
-    {
-        return view('answers.edit', compact('question'));
-    }
+    //  public function edit(Question $question)
+    // {
+    //     return view('answers.edit', compact('question'));
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

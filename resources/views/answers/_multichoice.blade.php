@@ -20,20 +20,36 @@
 	 			</tr>
 			@empty
 				<tr>
-					<td>{{ Form::text('answers[1][answer]', null, ['class' => 'form-control input-sm']) }}</td>
-					<td>{{ Form::radio('is_correct', 1, true) }}</td>
+					<td>
+						{{ Form::text('answers[1][answer]', null, ['class' => 'form-control input-sm']) }}
+					</td>
+					<td>
+						{{ Form::radio('is_correct', 1, true) }}
+					</td>
 				</tr>
 				<tr>
-					<td>{{ Form::text('answers[2][answer]', null, ['class' => 'form-control input-sm']) }}</td>
-					<td>{{ Form::radio('is_correct', 2) }}</td>
+					<td>
+						{{ Form::text('answers[2][answer]', null, ['class' => 'form-control input-sm']) }}
+					</td>
+					<td>
+						{{ Form::radio('is_correct', 2) }}
+					</td>
 				</tr>
 				<tr>
-					<td>{{ Form::text('answers[3][answer]', null, ['class' => 'form-control input-sm']) }}</td>
-					<td>{{ Form::radio('is_correct', 3) }}</td>
+					<td>
+						{{ Form::text('answers[3][answer]', null, ['class' => 'form-control input-sm']) }}
+					</td>
+					<td>
+						{{ Form::radio('is_correct', 3) }}
+					</td>
 				</tr>
 				<tr>
-					<td>{{ Form::text('answers[4][answer]', null, ['class' => 'form-control input-sm']) }}</td>
-					<td>{{ Form::radio('is_correct', 4) }}</td>
+					<td>
+						{{ Form::text('answers[4][answer]', null, ['class' => 'form-control input-sm']) }}
+					</td>
+					<td>
+						{{ Form::radio('is_correct', 4) }}
+					</td>
 				</tr>
 			@endforelse
 	 	</tbody>

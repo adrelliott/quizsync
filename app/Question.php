@@ -12,6 +12,10 @@ class Question extends Model
 {
 	protected $fillable = ['title', 'description', 'button_text', 'type', 'order_by', 'section_id'];
 
+    /**
+     * The Relationships
+     */
+
     public function answers()
     {
     	return $this->hasMany(Answer::class);
@@ -27,20 +31,11 @@ class Question extends Model
     	return $this->belongsTo(Quiz::class);
     }
 
-    public function createQuestion(Request $request, Quiz $quiz)
-    {
-        // Set the basic properties
-        $this->fill($request->all());
 
-        // Make sure order_by isn't blank
-        if( ! isset($request->order_by)) 
-            $this->order_by = count($quiz->questions) + 1;
-
-        // Save (using the relationship on quiz & return the model
-        $quiz->questions()->save($this);
-        return $this;
-    }
-
+    /**
+     * The Methods
+     */
+    
     public function updateQuestion(Request $request)
     {
         // Set the basic properties

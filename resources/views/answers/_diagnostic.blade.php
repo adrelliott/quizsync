@@ -13,6 +13,7 @@
 	 			<tr>
 	 				<td>
 	 					{{ Form::text('answers[' . $key . '][answer]', $row->answer, ['class' => 'form-control input-sm']) }}
+	 					{{ Form::hidden('answers[' . $key . '][is_correct]', null) }}
 	 				</td>
 	 				<td>
 	 					{{ Form::number('answers[' . $key . '][score]', $row->score, ['class' => 'form-control input-sm']) }}

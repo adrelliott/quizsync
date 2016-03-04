@@ -17,7 +17,7 @@
 					<tbody data-link="row" class="rowlink">
 						@foreach($quizzes as $quiz)
 							<tr>
-								<td><a href="{{ route('quizzes.show', $quiz->id) }}"></a>{{ $quiz->title }}</td>
+								<td><a href="{{ route('quizzes.show', ['quiz' => $quiz->id]) }}"></a>{{ $quiz->title }}</td>
 								<td>{{ $quiz->description }}</td>
 								<td>Quizmania.net/{{ $quiz->url }}</td>
 							</tr>
